@@ -2,8 +2,10 @@
 
 Uma API RESTful para uma plataforma de cursos com estilo inspirado no Stremio. Desenvolvida com Java, Spring Boot e autenticação via JWT.
 
+
 ## 🚀 Funcionalidades
 
+- Algumas funcinalidades ainda estão em desenvolvimento 
 - 📚 Listar cursos e detalhes
 - 🎮 Listar aulas por curso
 - ✅ Matricular-se em cursos
