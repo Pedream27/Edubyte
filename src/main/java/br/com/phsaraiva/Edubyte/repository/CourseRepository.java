@@ -1,0 +1,11 @@
+package br.com.phsaraiva.Edubyte.repository;
+
+import br.com.phsaraiva.Edubyte.model.Course;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
+
+public interface CourseRepository extends JpaRepository<Course, Long> {
+    List<Course> findByCategory(String category);
+}
+
