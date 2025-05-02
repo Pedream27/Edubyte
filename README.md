@@ -51,6 +51,57 @@ Uma API RESTful para uma plataforma de cursos com estilo inspirado no Stremio. D
 - JWT (JSON Web Token)
 - H2 Database (para testes)
 - MockMvc (para testes de controller)
+- Docker & Docker Compose
+
+🐳 Docker
+Este projeto já está pronto para rodar com Docker e Docker Compose.
+
+Dockerfile
+Dockerfile
+Copiar
+Editar
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY target/course-stream-api.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+docker-compose.yml
+yaml
+Copiar
+Editar
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: course-stream-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16
+    container_name: course-stream-db
+    environment:
+      POSTGRES_DB: banco_de_dados_postgres
+      POSTGRES_USER: usuario_postgres
+      POSTGRES_PASSWORD: senha_postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+Para iniciar
+bash
+Copiar
+Editar
+docker-compose up --build
+Acesse a API em http://localhost:8080.
 
 ## 🧪 Testes
 
